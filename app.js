@@ -11,7 +11,10 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
-
+//Handlebars helpers
+const {
+  section
+} = require('./helpers/hbs');
 
 var promise = mongoose.connect('mongodb://caseyrn:caseyrn@ds259305.mlab.com:59305/rnessentials', {
   useMongoClient: true,
@@ -25,7 +28,15 @@ var app = express();
 
 // View Engine
 app.set('views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs({defaultLayout:'layout'}));
+
+app.engine('handlebars', exphbs({
+	helpers: {
+		section:section
+	},
+	defaultLayout: 'layout'
+}));
+app.set('view engine', 'handlebars');
+
 app.set('view engine', 'handlebars');
 
 // BodyParser Middleware
