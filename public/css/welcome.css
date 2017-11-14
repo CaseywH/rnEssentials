@@ -40,10 +40,10 @@ body {
 }
 
 .slideshow li:nth-child(1) {
-  background-image: url(http://i.imgur.com/K3mPv14.jpg)
+  background-image: url(http://www.publicdomainpictures.net/pictures/10000/velka/2473-1270809666Fpnm.jpg)
 }
 .slideshow li:nth-child(2) {
-  background-image: url(http://www.publicdomainpictures.net/pictures/10000/velka/2473-1270809666Fpnm.jpg);
+  background-image: url(http://blog.soliant.com/wp-content/uploads/shutterstock_115143340-1.jpg);
   animation-delay: 10s;
 }
 .slideshow li:nth-child(3) {
