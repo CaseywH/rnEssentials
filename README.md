@@ -1,9 +1,9 @@
-# Node.js Loginapp
+# Node.js RNessentials
 
-This is a user login and registration app using Node.js, Express, Passport and Mongoose. It is part of the YouTube series [here](https://www.youtube.com/watch?v=Z1ktxiqyiLA)
+This is a webapp for Registered Nurses. RNessentials allows nurses to track and organise the many certifications and training requirements for the acute care setting
 
 ### Version
-1.1.0
+1.0.0
 
 ### Usage
 
