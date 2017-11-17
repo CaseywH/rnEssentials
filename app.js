@@ -20,6 +20,10 @@ var promise = mongoose.connect('mongodb://caseyrn:caseyrn@ds259305.mlab.com:5930
   useMongoClient: true,
 });
 
+//Passport config
+const passportConfig = require('./config/passport');
+
+//require routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');

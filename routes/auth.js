@@ -10,7 +10,7 @@ router.get('/register', function(req, res){
 	res.render('./index/register');
 });
 
-// Login
+// Local Login
 router.get('/login', function(req, res){
 	res.render('./index/login');
 });
@@ -56,34 +56,17 @@ router.post('/register', function(req, res){
 	}
 });
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-   User.getUserByUsername(username, function(err, user){
-   	if(err) throw err;
-   	if(!user){
-   		return done(null, false, {message: 'Unknown User'});
-   	}
+//google login
+router.get('/google', passport.authenticate('google',
+{scope: ['profile', 'email']}));
 
-   	User.comparePassword(password, user.password, function(err, isMatch){
-   		if(err) throw err;
-   		if(isMatch){
-   			return done(null, user);
-   		} else {
-   			return done(null, false, {message: 'Invalid password'});
-   		}
-   	});
-   });
-  }));
-
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.getUserById(id, function(err, user) {
-    done(err, user);
+router.get('/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  (req, res) => {
+    // Successful authentication, redirect home.
+    res.redirect('/users/dashboard');
   });
-});
+
 
 router.post('/login',
   passport.authenticate('local', {successRedirect:'/users/dashboard', failureRedirect:'/auth/login',failureFlash: true}),
@@ -96,7 +79,7 @@ router.get('/logout', function(req, res){
 
 	req.flash('success_msg', 'You are logged out');
 
-	res.redirect('/');
+	res.redirect('/auth/login');
 });
 
 module.exports = router;

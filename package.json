@@ -23,6 +23,7 @@
     "mongoose": "*",
     "nodemon": "^1.12.1",
     "passport": "*",
+    "passport-google-oauth20": "^1.0.0",
     "passport-http": "*",
     "passport-local": "*"
   }
