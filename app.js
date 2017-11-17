@@ -11,14 +11,26 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
+
+//Load User model
+require('./models/user');
+
 //Handlebars helpers
 const {
   section
 } = require('./helpers/hbs');
 
-var promise = mongoose.connect('mongodb://caseyrn:caseyrn@ds259305.mlab.com:59305/rnessentials', {
+//Load keys
+const keys = require('./config/keys');
+
+//Map global promise
+mongoose.Promise = global.Promise
+
+var promise = mongoose.connect(keys.mongoURI, {
   useMongoClient: true,
-});
+})
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
 
 //Passport config
 const passportConfig = require('./config/passport');

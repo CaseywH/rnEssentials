@@ -44,8 +44,35 @@ passport.use(new LocalStrategy(
       callbackURL:'/auth/google/callback',
       proxy: true
     }, (accessToken, refresToken, profile, done) =>{
-      console.log(accessToken);
-      console.log(profile);
+      const newUser ={
+        googleID: profile.id,
+        firstName: profile.name.givenName,
+        lastName: profile.name.familyName,
+        email: profile.emails[0].value,
+      }
+
+      // check for existing user
+      User.findOne({
+        email: profile.emails[0].value
+      }).then((user) => {
+        if(user){
+              user.googleID = newUser.googleID;
+              user.firstName = newUser.firstName;
+              user.lastName = newUser.lastName;
+              user.email = newUser.email;
+              user.save(function (err) {
+                  if(err) {
+                      console.error('ERROR!');
+                  }
+              })
+              .then(user => done(null, user));
+        } else{
+          //create user
+          new User(newUser)
+          .save()
+          .then(user => done(null, user));
+        }
+      })
     })
   )
 
