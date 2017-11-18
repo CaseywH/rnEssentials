@@ -27,6 +27,7 @@
     </ul>
   </div>
   {{#if user}}
+    <p class="navbar-text my-auto"><strong>{{user.firstName}}</strong>, you are logged in.</p>
     <a class="nav-link float-right" href="/auth/logout">Logout</a>
   {{else}}
     <a class="nav-link float-right" href="/auth/login">Login</a>
