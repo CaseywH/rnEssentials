@@ -36,7 +36,7 @@ var promise = mongoose.connect(keys.mongoURI, {
 const passportConfig = require('./config/passport');
 
 //require routes
-var routes = require('./routes/index');
+var index = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
 
@@ -67,37 +67,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Express Session
 app.use(session({
     secret: 'secret',
-    saveUninitialized: true,
-    resave: true
+    saveUninitialized: false,
+    resave: false
 }));
 
-// Passport init
+// Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Express Validator
-app.use(expressValidator({
-  errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
-      , formParam = root;
-
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
-    }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
-}));
 
 // Connect Flash
 app.use(flash());
 
 // Global Vars
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
@@ -107,7 +89,7 @@ app.use(function (req, res, next) {
 
 
 
-app.use('/', routes);
+app.use('/', index);
 app.use('/users', users);
 app.use('/auth', auth);
 

@@ -26,5 +26,10 @@
       </li>
     </ul>
   </div>
-  <a class="nav-link float-right" href="/auth/logout">logout</a>
+  {{#if user}}
+    <a class="nav-link float-right" href="/auth/logout">Logout</a>
+  {{else}}
+    <a class="nav-link float-right" href="/auth/login">Login</a>
+  {{/if}}
+
 </nav>

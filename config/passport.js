@@ -12,7 +12,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  User.getUserById(id, function(err, user) {
+  User.findById(id, function(err, user) {
     done(err, user);
   });
 });
@@ -64,8 +64,8 @@ passport.use(new LocalStrategy(
                   if(err) {
                       console.error('ERROR!');
                   }
-              })
-              .then(user => done(null, user));
+              });
+        done(null, user);
         } else{
           //create user
           new User(newUser)
