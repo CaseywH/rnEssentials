@@ -6,13 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#">Profile <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,10 +21,21 @@
     </ul>
   </div>
   {{#if user}}
-    <p class="navbar-text my-auto"><strong>{{user.firstName}}</strong>, you are logged in.</p>
-    <a class="nav-link float-right" href="/auth/logout">Logout</a>
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <p class="navbar-text my-auto"><strong>{{user.firstName}}</strong>, you are logged in.</p>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link float-right" href="/auth/logout">Logout</a>
+    </li>
+  </ul>  
   {{else}}
-    <a class="nav-link float-right" href="/auth/login">Login</a>
+  <ul class="navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link float-right" href="/auth/login">Login</a>
+    </li>
+  </ul>
+
   {{/if}}
 
 </nav>

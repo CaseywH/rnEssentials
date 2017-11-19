@@ -2,3 +2,7 @@ a{
   text-decoration: none;
   color: inherit;
 }
+
+.fixed-bottom{
+  max-height: 40px
+}

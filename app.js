@@ -40,6 +40,7 @@ const passportConfig = require('./config/passport');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
+var cert = require('./routes/cert');
 
 // Init App
 var app = express();
@@ -93,6 +94,7 @@ app.use((req, res, next) => {
 app.use('/', index);
 app.use('/users', users);
 app.use('/auth', auth);
+app.use('/cert', cert);
 
 // Set Port
 app.set('port', (process.env.PORT || 3000));
