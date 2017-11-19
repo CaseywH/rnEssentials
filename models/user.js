@@ -21,6 +21,12 @@ var UserSchema = mongoose.Schema({
 	lastName: {
 		type: String
 	},
+	certification:[
+		{
+	      type: Schema.Types.ObjectId,
+	      ref:'Cert'
+	    }
+	]
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);

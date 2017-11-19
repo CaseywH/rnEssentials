@@ -14,6 +14,7 @@ var mongoose = require('mongoose');
 
 //Load User model
 require('./models/user');
+require('./models/cert');
 
 //Handlebars helpers
 const {
