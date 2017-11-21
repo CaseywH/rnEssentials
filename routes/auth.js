@@ -3,6 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
+const {ensureAuthenticated, ensureGuest} = require('../helpers/auth');
 
 var User = require('../models/user');
 

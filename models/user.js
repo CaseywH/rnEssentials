@@ -21,15 +21,15 @@ var UserSchema = mongoose.Schema({
 	lastName: {
 		type: String
 	},
-	certification:[
+	certifications:[
 		{
-	      type: Schema.Types.ObjectId,
-	      ref:'Cert'
-	    }
+	    type: mongoose.Schema.Types.ObjectId,
+	    ref:'cert'
+	  }
 	]
 });
 
-var User = module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('user', UserSchema);
 
 module.exports.createUser = function(newUser, callback){
 	bcrypt.genSalt(10, function(err, salt) {

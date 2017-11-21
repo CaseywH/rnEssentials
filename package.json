@@ -13,7 +13,6 @@
     "bcryptjs": "*",
     "body-parser": "*",
     "connect-flash": "*",
-    "cookie-parser": "^1.4.1",
     "express": "*",
     "express-handlebars": "*",
     "express-messages": "*",

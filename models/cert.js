@@ -24,10 +24,10 @@ var CertSchema = mongoose.Schema({
 		type: String,
 		required: false
 	},
-	image: {
-		type: String,
-		required: false
-	}
+	// image: {
+	// 	type: String,
+	// 	required: false
+	// }
 });
 
-var User = module.exports = mongoose.model('Cert', CertSchema);
+module.exports = mongoose.model('cert', CertSchema);
