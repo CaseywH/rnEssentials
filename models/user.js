@@ -23,8 +23,21 @@ var UserSchema = mongoose.Schema({
 	},
 	certifications:[
 		{
-	    type: mongoose.Schema.Types.ObjectId,
-	    ref:'cert'
+			cateogry:{
+				type: String
+			},
+			title: {
+				type: String
+			},
+			issued: {
+				type: Date
+			},
+			expiration: {
+				type: Date
+			},
+			notes: {
+				type: String
+			}
 	  }
 	]
 });

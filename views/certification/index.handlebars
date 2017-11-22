@@ -7,3 +7,80 @@
 <div class="container">
 	<h1 class="page-header text-center">Certifications</h1>
 </div>
+
+<div class="container">
+	<div class="row">
+		<ul class="list-group">
+			<li class="list-group-item">
+				<h4>License</h4>
+				{{#each certObj.license}}
+					<div class="card" style="width: 20rem;">
+					  <div class="card-body">
+					    <h4 class="card-title">{{title}}</h4>
+					    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
+							<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
+					    <p class="card-text">Notes: {{notes}}</p>
+					    <a href="#" class="card-link">see more</a>
+					  </div>
+					</div>
+				{{/each}}
+			</li>
+			<li class="list-group-item">
+				<h4>Required</h4>
+				{{#each certObj.required}}
+					<div class="card" style="width: 20rem;">
+					  <div class="card-body">
+					    <h4 class="card-title">{{title}}</h4>
+					    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
+							<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
+					    <p class="card-text">Notes: {{notes}}</p>
+					    <a href="#" class="card-link">see more</a>
+					  </div>
+					</div>
+				{{/each}}
+			</li>
+			<li class="list-group-item">
+				<h4>Specialty</h4>
+				{{#each certObj.specialty}}
+					<div class="card" style="width: 20rem;">
+					  <div class="card-body">
+					    <h4 class="card-title">{{title}}</h4>
+					    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
+							<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
+					    <p class="card-text">Notes: {{notes}}</p>
+					    <a href="#" class="card-link">see more</a>
+					  </div>
+					</div>
+				{{/each}}
+			</li>
+			<li class="list-group-item">
+				<h4>Facility</h4>
+				{{#each certObj.facility}}
+					<div class="card" style="width: 20rem;">
+					  <div class="card-body">
+					    <h4 class="card-title">{{title}}</h4>
+					    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
+							<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
+					    <p class="card-text">Notes: {{notes}}</p>
+					    <a href="#" class="card-link">see more</a>
+					  </div>
+					</div>
+				{{/each}}
+			</li>
+			<li class="list-group-item">
+				<h4>Misc.</h4>
+				{{#each certObj.miscellaneous}}
+					<div class="card" style="width: 20rem;">
+					  <div class="card-body">
+					    <h4 class="card-title">{{title}}</h4>
+					    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
+							<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
+					    <p class="card-text">Notes: {{notes}}</p>
+					    <a href="#" class="card-link">see more</a>
+					  </div>
+					</div>
+				{{/each}}
+			</li>
+		</ul>
+	</div>
+</div>

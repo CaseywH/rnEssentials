@@ -13,11 +13,12 @@ var mongoose = require('mongoose');
 
 //Load User model
 require('./models/user');
-require('./models/cert');
+// require('./models/cert');
 
 //Handlebars helpers
 const {
-  section
+  section,
+  categoryList
 } = require('./helpers/hbs');
 
 //Load keys
@@ -49,7 +50,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.engine('handlebars', exphbs({
 	helpers: {
-		section:section
+		section:section,
+    categoryList: categoryList
 	},
 	defaultLayout: 'layout'
 }));

@@ -5,25 +5,20 @@ const Schema = mongoose.Schema
 // User Schema
 var CertSchema = mongoose.Schema({
 	cateogry:{
-		type: String,
-		required: true
+		type: String
 	},
-	name: {
-		type: String,
-		required: true
+	title: {
+		type: String
 	},
 	issued: {
 		type: Date,
-		required: false
 	},
 	expiration: {
-		type: Date,
-		required: false
+		type: Date
 	},
 	notes: {
-		type: String,
-		required: false
-	},
+		type: String
+	}
 	// image: {
 	// 	type: String,
 	// 	required: false
