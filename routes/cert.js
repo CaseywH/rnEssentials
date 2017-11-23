@@ -59,8 +59,8 @@ const sortCert = function(certs) {
 			certObj.specialty.push(cert)
 		}else if (cert.cateogry == "Facility Specific") {
 			certObj.facility.push(cert)
-		}else if (cert.cateogry == "miscellaneous") {
-			certObj.miscellabeous.push(cert)
+		}else if (cert.cateogry == "Miscellaneous") {
+			certObj.miscellaneous.push(cert)
 		}
 	});
 	return certObj;

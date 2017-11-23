@@ -11,75 +11,104 @@
 <div class="container">
 	<div class="row">
 		<ul class="list-group">
-			<li class="list-group-item">
+			<li class="list-group-item mb-2">
 				<h4>License</h4>
-				{{#each certObj.license}}
-					<div class="card" style="width: 20rem;">
-					  <div class="card-body">
-					    <h4 class="card-title">{{title}}</h4>
-					    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
-							<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
-					    <p class="card-text">Notes: {{notes}}</p>
-					    <a href="#" class="card-link">see more</a>
-					  </div>
+				<div class="row">
+					{{#each certObj.license}}
+					<div class="col-sm-4 mx-auto">
+						<div class="card" style="width: 20rem; inline-block">
+						  <div class="card-body">
+						    <h4 class="card-title">{{title}}</h4>
+						    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
+								<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
+						    <p class="card-text">Notes: {{notes}}</p>
+						    <a href="#" class="btn btn-secondary">Edit</a>
+								<a href="#" class="btn btn-danger">Delete</a>
+						  </div>
+						</div>
 					</div>
-				{{/each}}
+					{{/each}}
+				</div>
 			</li>
-			<li class="list-group-item">
+			<br>
+			<li class="list-group-item mb-2">
 				<h4>Required</h4>
-				{{#each certObj.required}}
-					<div class="card" style="width: 20rem;">
-					  <div class="card-body">
-					    <h4 class="card-title">{{title}}</h4>
-					    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
-							<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
-					    <p class="card-text">Notes: {{notes}}</p>
-					    <a href="#" class="card-link">see more</a>
-					  </div>
+				<div class="row">
+					{{#each certObj.required}}
+					<div class="col-sm-4 mx-auto">
+						<div class="card" style="width: 20rem;">
+						  <div class="card-body">
+						    <h4 class="card-title">{{title}}</h4>
+						    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
+								<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
+						    <p class="card-text">Notes: {{notes}}</p>
+								<a href="#" class="btn btn-secondary">Edit</a>
+								<a href="#" class="btn btn-danger">Delete</a>
+						  </div>
+						</div>
 					</div>
-				{{/each}}
+					{{/each}}
+				</div>
 			</li>
-			<li class="list-group-item">
+			<br>
+			<li class="list-group-item mb-2">
 				<h4>Specialty</h4>
-				{{#each certObj.specialty}}
-					<div class="card" style="width: 20rem;">
-					  <div class="card-body">
-					    <h4 class="card-title">{{title}}</h4>
-					    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
-							<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
-					    <p class="card-text">Notes: {{notes}}</p>
-					    <a href="#" class="card-link">see more</a>
-					  </div>
+				<div class="row">
+					{{#each certObj.specialty}}
+					<div class="col-sm-4 mx-auto">
+						<div class="card" style="width: 20rem;">
+						  <div class="card-body">
+						    <h4 class="card-title">{{title}}</h4>
+						    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
+								<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
+						    <p class="card-text">Notes: {{notes}}</p>
+								<a href="#" class="btn btn-secondary">Edit</a>
+								<a href="#" class="btn btn-danger">Delete</a>
+						  </div>
+						</div>
 					</div>
-				{{/each}}
+					{{/each}}
+				</div>
 			</li>
-			<li class="list-group-item">
+			<br>
+			<li class="list-group-item mb-2">
 				<h4>Facility</h4>
-				{{#each certObj.facility}}
-					<div class="card" style="width: 20rem;">
-					  <div class="card-body">
-					    <h4 class="card-title">{{title}}</h4>
-					    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
-							<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
-					    <p class="card-text">Notes: {{notes}}</p>
-					    <a href="#" class="card-link">see more</a>
-					  </div>
+				<div class="row">
+					{{#each certObj.facility}}
+					<div class="col-sm-4 mx-auto">
+						<div class="card" style="width: 20rem;">
+						  <div class="card-body">
+						    <h4 class="card-title">{{title}}</h4>
+						    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
+								<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
+						    <p class="card-text">Notes: {{notes}}</p>
+								<a href="#" class="btn btn-secondary">Edit</a>
+								<a href="#" class="btn btn-danger">Delete</a>
+						  </div>
+						</div>
 					</div>
-				{{/each}}
+					{{/each}}
+				</div>
 			</li>
-			<li class="list-group-item">
+			<br>
+			<li class="list-group-item mb-2">
 				<h4>Misc.</h4>
-				{{#each certObj.miscellaneous}}
-					<div class="card" style="width: 20rem;">
-					  <div class="card-body">
-					    <h4 class="card-title">{{title}}</h4>
-					    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
-							<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
-					    <p class="card-text">Notes: {{notes}}</p>
-					    <a href="#" class="card-link">see more</a>
-					  </div>
+					<div class="row">
+						{{#each certObj.miscellaneous}}
+						<div class="col-sm-4 mx-auto">
+							<div class="card" style="width: 20rem; d-inline-block">
+							  <div class="card-body">
+							    <h4 class="card-title">{{title}}</h4>
+							    <h6 class="card-subtitle mb-2">issued: {{issued}}</h6>
+									<h6 class="card-subtitle mb-2">expiration: {{expiration}}</h6>
+							    <p class="card-text">Notes: {{notes}}</p>
+									<a href="#" class="btn btn-secondary">Edit</a>
+									<a href="#" class="btn btn-danger">Delete</a>
+							  </div>
+							</div>
+						</div>
+						{{/each}}
 					</div>
-				{{/each}}
 			</li>
 		</ul>
 	</div>
