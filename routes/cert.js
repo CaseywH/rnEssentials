@@ -3,12 +3,14 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 const User = mongoose.model('user');
+const Cert = mongoose.model('cert');
 const {ensureAuthenticated, ensureGuest} = require('../helpers/auth');
 
 
 //Index Page
 router.get('/', ensureAuthenticated, (req, res) => {
 	User.findOne({_id: req.user.id})
+	.populate('certifications')
 	.then(user => {
 		res.render('./certification/index', {certObj:sortCert(user.certifications)});
 	})
@@ -34,14 +36,31 @@ router.post('/', ensureAuthenticated, (req, res) => {
 				notes: req.body.notes
 		    // file: req.user.file
 		  };
-		user.certifications.push(newCert);
-		user.save()
-			.then(() => {
-				res.redirect('/cert');
-			});
+		Cert.create(newCert, function(err, cert){
+			if(err){
+               console.log(err);
+           } else {
+               //save comment
+               cert.save();
+               user.certifications.push(cert);
+               user.save();
+               console.log(cert);
+               req.flash('success', 'Created a cert/license!');
+               res.redirect('/cert');
+           }
+		});
 	});
 });
 
+//Delete Cert
+router.delete('/:id', (req, res) => {
+	Cert.remove({_id:req.params.id})
+	.then(() => {
+		res.redirect('/dashboard')
+	})
+})
+
+//sort certifications
 const sortCert = function(certs) {
 	const certObj = {
 		license: [],

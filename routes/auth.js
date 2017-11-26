@@ -6,6 +6,7 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 const {ensureAuthenticated, ensureGuest} = require('../helpers/auth');
 
 var User = require('../models/user');
+var Cert = require('../models/cert');
 
 // Register
 router.get('/register', function(req, res){

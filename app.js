@@ -13,12 +13,14 @@ var mongoose = require('mongoose');
 
 //Load User model
 require('./models/user');
-// require('./models/cert');
+require('./models/cert');
+
 
 //Handlebars helpers
 const {
   section,
-  categoryList
+  categoryList,
+  formatDate
 } = require('./helpers/hbs');
 
 //Load keys
@@ -51,13 +53,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', exphbs({
 	helpers: {
 		section:section,
-    categoryList: categoryList
+    categoryList: categoryList,
+    formatDate: formatDate
 	},
 	defaultLayout: 'layout'
 }));
 app.set('view engine', 'handlebars');
 
-app.set('view engine', 'handlebars');
 
 // BodyParser Middleware
 app.use(bodyParser.json());

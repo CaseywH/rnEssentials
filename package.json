@@ -18,6 +18,7 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "moment": "^2.19.2",
     "mongodb": "*",
     "mongoose": "*",
     "nodemon": "^1.12.1",

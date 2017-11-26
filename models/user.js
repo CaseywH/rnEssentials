@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 const Schema = mongoose.Schema
 var bcrypt = require('bcryptjs');
+var Cert = require('../models/cert');
 
 // User Schema
 var UserSchema = mongoose.Schema({
@@ -21,25 +22,12 @@ var UserSchema = mongoose.Schema({
 	lastName: {
 		type: String
 	},
-	certifications:[
-		{
-			cateogry:{
-				type: String
-			},
-			title: {
-				type: String
-			},
-			issued: {
-				type: Date
-			},
-			expiration: {
-				type: Date
-			},
-			notes: {
-				type: String
-			}
-	  }
-	]
+	certifications: [
+      {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "cert"
+      }
+   ]
 });
 
 module.exports = mongoose.model('user', UserSchema);

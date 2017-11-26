@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var Cert = require('../models/cert');
 const {ensureAuthenticated, ensureGuest} = require('../helpers/auth');
 
 
