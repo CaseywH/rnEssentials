@@ -1,0 +1,37 @@
+
+
+
+<div class="container">
+  <div class="col s10">
+    <h2 class="page-header text-center mb-5">Account Login</h2>
+    <form method="post" action="/auth/login">
+      <div class="form-group col-md-4 mx-auto">
+        <input type="text" class="form-control" name="username" placeholder="Username">
+      </div>
+      <div class="form-group col-md-4 mx-auto">
+        <input type="password" class="form-control" name="password" placeholder="Password">
+      </div>
+      <div class="row justify-content-center mt-2">
+        <div class="col-md-4 mt-1 mx-auto">
+          <button type="submit" class="btn btn-secondary btn-block">Submit</button>
+          <hr class="my-2">
+        </div>
+      </div>
+    </form>
+    <div class="row mt-2">
+        <div class="col-md-4 mt-1 mx-auto">
+          <a id="googleLogin" href="/auth/google" class="btn btn-dark btn-block"><i class="fa fa-google" aria-hidden="true"></i>oogle</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-4 mt-1 mx-auto">
+          <a id="facebookLogin" href="/auth/facebook" class="btn btn-dark btn-block"><i class="fa fa-facebook-official" aria-hidden="true"></i> Facebook</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-4 mt-1 mx-auto">
+          <a href="/auth/register" class="btn btn-dark btn-block">Register as a new user</a>
+        </div>
+    </div>
+  </div>
+</div>

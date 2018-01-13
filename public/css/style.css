@@ -1,0 +1,12 @@
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+#googleLogin:hover{
+  background-color: red
+}
+
+#facebookLogin:hover {
+  background-color: #3b5998
+}

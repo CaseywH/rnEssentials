@@ -1,0 +1,36 @@
+
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" {{#if user}}href="/cert"{{else}} href="/" {{/if}}>RNessentials</a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    {{#if user}}
+                    <li class="nav-item text-white">
+                      <a href="#" class="nav-link">Hello, {{user.firstName}}</a>
+                    </li>
+                    {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/login">Login</a>
+                    </li>
+                    {{/if}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cert">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mailto:contact@rnessentials.io">Contact us!</a>
+                    </li>
+                    {{#if user}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/logout">Logout</a>
+                    </li>
+                    {{/if}}
+                </ul>
+            </div>
+          </div>
+    </nav>
