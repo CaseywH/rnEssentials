@@ -12,6 +12,9 @@ var storage = multer.diskStorage({
     callback(null, Date.now() + file.originalname);
   }
 });
+
+var helper = require('./helpers/cert')
+
 var imageFilter = function (req, file, cb) {
     // accept image files only
     if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
@@ -31,11 +34,7 @@ cloudinary.config({
 
 //Index Page
 router.get('/', ensureAuthenticated, (req, res) => {
-	User.findOne({_id: req.user.id})
-	.populate('certifications')
-	.then(user => {
-		res.render('./certification/index', {certObj:sortCert(user.certifications)});
-	})
+	helper.displayCerts(req, res)
 })
 
 
@@ -46,75 +45,24 @@ router.get('/add', ensureAuthenticated, (req, res) => {
 
 //Create cert and save to user
 router.post("/", ensureAuthenticated, upload.single('image'), function(req, res) {
-	User.findOne({
-	    _id: req.user.id
-	})
-	.then(user => {
-		cloudinary.uploader.upload(req.file.path, function(result) {
-				const newCert = {
-			    cateogry: req.body.category,
-			    title: req.body.title,
-			    issued: req.body.issued,
-			    expiration: req.body.expiration,
-				notes: req.body.notes,
-			    image: result.secure_url
-			  };
-			Cert.create(newCert, function(err, cert){
-				if(err){
-	               console.log(err);
-	           } else {
-	               //save comment
-	               cert.save();
-	               user.certifications.push(cert);
-	               user.save();
-	               console.log(cert);
-	               req.flash('success_msg', 'Created a cert/license!');
-	               res.redirect('/cert');
-	           }
-			});
-		});
-	});
+	helper.createCert(req, res)
 });
 
 
-//edit Cer form
+//edit Cert form
 router.get('/edit/:id', ensureAuthenticated, (req, res) => {
-	Cert.findOne({
-		_id: req.params.id
-	})
-	.then(cert => {
-		res.render('certification/edit', {cert: cert})
-	})
+	helper.editCertForm(req, res)
 });
 
 //Edit Cert Process
 router.put('/:id', (req, res) => {
-	Cert.findOne({
-		_id: req.params.id
-	})
-	.then(cert => {
-	// New values
-	cert.cateogry = req.body.category
-	cert.title = req.body.title,
-	cert.issued = req.body.issued,
-	cert.expiration = req.body.expiration,
-	cert.notes = req.body.notes
-
-	cert.save()
-		.then(cert => {
-			res.redirect('/cert');
-		})
-	})
+	helper.editCert(req, res)
 })
 
 
 //Delete Cert
 router.delete('/:id', (req, res) => {
-	Cert.remove({_id:req.params.id})
-	.then(() => {
-		req.flash('success_msg', 'cert/license!');
-		res.redirect('/cert')
-	})
+	helper.deleteCert(req, res)
 })
 
 
