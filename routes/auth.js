@@ -29,9 +29,7 @@ router.post('/login',
   });
 
 // Register User
-router.post('/register', (req, res) => {
-	helper.register(req, res);
-});
+router.post('/register', helper.register)
 
 //google login
 router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));

@@ -33,9 +33,7 @@ cloudinary.config({
 
 
 //Index Page
-router.get('/', ensureAuthenticated, (req, res) => {
-	helper.displayCerts(req, res)
-})
+router.get('/', ensureAuthenticated, helper.displayCerts)
 
 
 //Add cert page
@@ -44,52 +42,20 @@ router.get('/add', ensureAuthenticated, (req, res) => {
 })
 
 //Create cert and save to user
-router.post("/", ensureAuthenticated, upload.single('image'), function(req, res) {
-	helper.createCert(req, res)
-});
-
+router.post("/", ensureAuthenticated, upload.single('image'), helper.createCert)
 
 //edit Cert form
-router.get('/edit/:id', ensureAuthenticated, (req, res) => {
-	helper.editCertForm(req, res)
-});
+router.get('/edit/:id', ensureAuthenticated,helper.editCertForm)
 
 //Edit Cert Process
-router.put('/:id', (req, res) => {
-	helper.editCert(req, res)
-})
+router.put('/:id', helper.editCert)
 
 
 //Delete Cert
-router.delete('/:id', (req, res) => {
-	helper.deleteCert(req, res)
-})
+router.delete('/:id', helper.deleteCert)
 
 
-//sort certifications
-const sortCert = function(certs) {
-	const certObj = {
-		license: [],
-		required: [],
-		specialty: [],
-		facility: [],
-		miscellaneous: []
-	}
-	certs.forEach(cert => {
-		if(cert.cateogry == "Liscense"){
-			certObj.license.push(cert)
-		}else if (cert.cateogry == "Required Certifications") {
-			certObj.required.push(cert)
-		}else if (cert.cateogry == "Specialty Certifications") {
-			certObj.specialty.push(cert)
-		}else if (cert.cateogry == "Facility Specific") {
-			certObj.facility.push(cert)
-		}else if (cert.cateogry == "Miscellaneous") {
-			certObj.miscellaneous.push(cert)
-		}
-	});
-	return certObj;
-}
+
 
 
 

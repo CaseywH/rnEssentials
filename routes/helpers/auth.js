@@ -8,8 +8,8 @@ var User = require('/Users/casey/projects/rnessentials/models/user.js');
 var Cert = require('/Users/casey/projects/rnessentials/models/cert.js');
 
 
-module.exports = {
-  register : function (req, res){
+
+  exports.register = function (req, res){
     var {firstName, lastName, email, password, password2} = req.body;
 	// Validation
 	req.checkBody('firstName', 'First name is required').notEmpty();
@@ -62,4 +62,4 @@ module.exports = {
     }
   }
 
-}
+  module.exports = exports;

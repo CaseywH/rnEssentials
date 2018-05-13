@@ -1,15 +1,15 @@
 var User = require('/Users/casey/projects/rnessentials/models/user.js');
 var Cert = require('/Users/casey/projects/rnessentials/models/cert.js');
 
-module.exports = {
-  displayCerts: function(req, res){
+
+  exports.displayCerts =  function(req, res){
     User.findOne({_id: req.user.id})
     .populate('certifications')
     .then(user => {
       res.render('./certification/index', {certObj:sortCert(user.certifications)});
     })
-  },
-  createCert: function(req, res){
+  }
+  exports.createCert = function(req, res){
     User.findOne({
 	    _id: req.user.id
 	  })
@@ -37,16 +37,16 @@ module.exports = {
           })
         });
 		  });
-  },
-  editCertForm: function(req, res){
+  }
+  exports.editCertForm = function(req, res){
     Cert.findOne({
       _id: req.params.id
     })
     .then(cert => {
       res.render('certification/edit', {cert: cert})
     })
-  },
-  editCert: function(req, res){
+  }
+  exports.editCert = function(req, res){
     Cert.findOne({
       _id: req.params.id
     })
@@ -63,12 +63,40 @@ module.exports = {
         res.redirect('/cert');
       })
     })
-  },
-  deleteCert: function(req, res){
+  }
+  exports.deleteCert = function(req, res){
     Cert.remove({_id:req.params.id})
 	  .then(() => {
 		req.flash('success_msg', 'cert/license!');
 		res.redirect('/cert')
 	  })
   }
+
+
+  module.exports = exports
+
+
+  //sort certifications
+const sortCert = function(certs) {
+	const certObj = {
+		license: [],
+		required: [],
+		specialty: [],
+		facility: [],
+		miscellaneous: []
+	}
+	certs.forEach(cert => {
+		if(cert.cateogry == "Liscense"){
+			certObj.license.push(cert)
+		}else if (cert.cateogry == "Required Certifications") {
+			certObj.required.push(cert)
+		}else if (cert.cateogry == "Specialty Certifications") {
+			certObj.specialty.push(cert)
+		}else if (cert.cateogry == "Facility Specific") {
+			certObj.facility.push(cert)
+		}else if (cert.cateogry == "Miscellaneous") {
+			certObj.miscellaneous.push(cert)
+		}
+	});
+	return certObj;
 }
